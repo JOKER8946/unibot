@@ -1,0 +1,131 @@
+/* Whole App layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fc;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background: #1e1e2f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100vh;
+  position: fixed; /* Keep sidebar fixed */
+  left: 0;
+  top: 0;
+/* }ju st */
+
+/* Main Content (Right side) */
+.main-content {
+  margin-left: 240px; /* ensures content shifts beside sidebar */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8f9fc;
+}
+
+/* Navbar */
+.navbar {
+  background: white;
+  padding: 15px 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 60px; /* Fixed height for uniformity */
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* Page Content */
+.page-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+/* Ensure all pages start at the same height */
+.page-content h2 {
+  margin-top: 0;
+}
+
+/* Remove browser default margins from forms */
+form {
+  margin-top: 10px;
+}
+
+/* --- Prevent any user uploads --- */
+/* Hide native file inputs entirely */
+input[type="file"],
+input[type="file"] + label {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Hide common upload UI elements and dropzones */
+.upload,
+.upload-btn,
+.upload-button,
+.button-upload,
+.file-input,
+.dropzone,
+.drop-zone,
+.upload-area {
+  display: none !important;
+}
+
+/* Disable and de-emphasize "add" buttons for notes/timetables/events */
+.add-note,
+.add-note-btn,
+.add-event,
+.add-event-btn,
+.add-timetable,
+.add-timetable-btn,
+button[class*="add-"],
+button[data-upload],
+a[class*="add-"],
+a[data-upload] {
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  user-select: none !important;
+}
+
+/* Additional broad coverage: any element whose class or id suggests upload or file should be inert */
+[class*="upload"],
+[id*="upload"],
+[class*="file"],
+[id*="file"],
+[class*="drop"],
+[id*="drop"] {
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+}
+
+/* Prevent accidental form submissions that might include files by hiding multipart submit controls */
+button[type="submit"][data-multipart],
+button[data-multipart],
+input[type="submit"][data-multipart] {
+  display: none !important;
+}
+
+/* Accessibility hint (visual only) */
+.no-upload-allowed::after {
+  content: " — uploads disabled";
+  font-size: 0.85em;
+  color: #666;
+  margin-left: 6px;
+}
